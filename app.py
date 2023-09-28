@@ -124,13 +124,13 @@ with st.expander('Submit a Result'):
             conn = st.experimental_connection("gsheets", type=GSheetsConnection,ttl=600)
             conn.update(data=data,worksheet='Ratings')
             conn.update(data=game_log,worksheet='Game Log')
-            st.rerun()
+            st.experimental_rerun()
     with button_cols[3]:
         if st.button('Refresh'):
             st.cache_data.clear()
             conn = st.experimental_connection("gsheets", type=GSheetsConnection,ttl=600)
             st.session_state['data'] = conn.read(usecols=[0, 1, 2]).dropna()
             st.session_state['game_log'] = conn.read(usecols=[0,1,2,3,4,5,6,7,8,9],worksheet='Game Log').dropna()
-            st.rerun()
+            st.experimental_rerun()
 with st.expander('Game Log'):
     st.dataframe(game_log.reindex(index=data.index[::-1]).dropna(),use_container_width=True)
