@@ -26,10 +26,8 @@ def expected_score(rating_1,rating_2):
 def k_factor(games_played):
     if games_played < 5:
         return 48
-    elif games_played < 20:
-        return 36
     else: 
-        return 24
+        return 36
 
 def rating_change(player,opponent,result):
     player_rating = data[data.Player == player].Rating.tolist()[0]
