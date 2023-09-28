@@ -58,7 +58,7 @@ def rating_change(player,opponent,result):
 st.title('Ramsey Chess ELO')
 container = st.empty()
 with container:
-    st.dataframe(data.sort_values(by='Rating',ascending=False).reset_index(drop=True),use_container_width = True)
+    st.dataframe(data[['Player','Rating']].sort_values(by='Rating',ascending=False).reset_index(drop=True),use_container_width = True)
 results = ['Win','Draw','Loss']
 
 with st.expander('Submit a Result'):
