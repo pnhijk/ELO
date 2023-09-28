@@ -103,7 +103,7 @@ with st.expander('Submit a Result'):
             
             with container:
                 st.dataframe(data.sort_values(by='Rating',ascending=False).reset_index(drop=True),use_container_width = True)
-            game_log.loc[len(game_log)] = [p,por,pnr,prc,o,oor,onr,orc,datetime.today().strftime('%Y-%m-%d'),r]
+            game_log.loc[len(game_log)] = [p,por,pnr,prc,o,oor,onr,orc,datetime.today().strftime('%Y-%m-%d %H:%M'),r]
             
             st.session_state['game_log'] = game_log
     with button_cols[1]:
