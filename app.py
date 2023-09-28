@@ -60,7 +60,7 @@ def rating_change(player,opponent,result):
 st.title('Ramsey Chess ELO')
 container = st.empty()
 with container:
-    st.dataframe(data.sort_values(by='Rating',ascending=False).reset_index(drop=True),hide_index=True,use_container_width = True)
+    st.dataframe(data.sort_values(by='Rating',ascending=False).reset_index(drop=True),use_container_width = True)
 results = ['Win','Draw','Loss']
 
 with st.expander('Submit a Result'):
@@ -104,7 +104,7 @@ with st.expander('Submit a Result'):
             st.session_state['data'] = data
             
             with container:
-                st.dataframe(data.sort_values(by='Rating',ascending=False).reset_index(drop=True),hide_index=True,use_container_width = True)
+                st.dataframe(data.sort_values(by='Rating',ascending=False).reset_index(drop=True),use_container_width = True)
             game_log.loc[len(game_log)] = [p,por,pnr,prc,o,oor,onr,orc,datetime.today().strftime('%Y-%m-%d'),r]
             
             st.session_state['game_log'] = game_log
@@ -133,4 +133,4 @@ with st.expander('Submit a Result'):
             st.session_state['game_log'] = conn.read(usecols=[0,1,2,3,4,5,6,7,8,9],worksheet='Game Log').dropna()
             st.rerun()
 with st.expander('Game Log'):
-    st.dataframe(game_log.reindex(index=data.index[::-1]).dropna(),hide_index=True,use_container_width=True)
+    st.dataframe(game_log.reindex(index=data.index[::-1]).dropna(),use_container_width=True)
