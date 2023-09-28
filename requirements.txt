@@ -1,2 +1,2 @@
-streamlit==1.22
+streamlit==1.27
 git+https://github.com/streamlit/gsheets-connection
