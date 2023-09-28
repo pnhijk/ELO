@@ -127,7 +127,7 @@ with st.expander('Submit a Result'):
         if st.button('Refresh'):
             st.cache_data.clear()
             conn = st.experimental_connection("gsheets", type=GSheetsConnection,ttl=600)
-            st.session_state['data'] = conn.read(usecols=[0, 1, 2]).dropna()
+            st.session_state['data'] = conn.read(usecols=[0, 1, 2],worksheet='Ratings').dropna()
             st.session_state['game_log'] = conn.read(usecols=[0,1,2,3,4,5,6,7,8,9],worksheet='Game Log').dropna()
             st.experimental_rerun()
 with st.expander('Game Log'):
